@@ -1,0 +1,44 @@
+.auth {
+  &__block {
+    width: 516px;
+    background-color: #17212b;
+    padding: 40px 110px 48px;
+  }
+
+  &__logo {
+    width: 140px;
+    height: 140px;
+    background-color: #242f3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-bottom: 35px;
+
+    & > img {
+      width: 85px;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  &__subtitle {
+    color: #7f91a4;
+    font-size: 16px;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 46px;
+    line-height: 20px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+}

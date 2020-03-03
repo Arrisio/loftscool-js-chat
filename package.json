@@ -1,5 +1,5 @@
 {
-  "name": "loftschool-js-proj1",
+  "name": "loftschool-js-chat",
   "version": "1.0.0",
   "private": true,
   "author": "Dmitriy Suchkov <suchkov.dv@gmail.com>",
@@ -38,7 +38,5 @@
     "webpack-cli": "^3.3.4",
     "webpack-dev-server": "^3.7.2"
   },
-  "dependencies": {
-    "jquery": "^3.4.1"
-  }
+  "dependencies": {}
 }

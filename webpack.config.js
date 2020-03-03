@@ -32,17 +32,15 @@ const optimization = () => {
 };
 
 rules.push({
-    // test: /\.css$/,
-    test:  /\.s[ac]ss$/i,
+    test: /\.s[ac]ss$/,
     use: [
-        // {
-        //     loader: MiniCssExtractPlugin.loader,
-        //     options: {
-        //         hmr: isDev,
-        //         reloadAll: isDev,
-        //     }
-        // },
-    'style-loader','css-loader', 'sass-loader',]
+        {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+                hmr: isDev,
+                reloadAll: isDev,
+            }
+        }, 'css-loader','sass-loader']
 });
 
 module.exports = {
@@ -70,7 +68,7 @@ module.exports = {
     plugins: [
         new ExtractTextPlugin('css.css'),
         new htmlWebpackPlugin({
-            title: 'Proj1-GeoFeedback',
+            title: 'Chat',
             template: 'templates/index.hbs',
             minify: {
                 collapseWhitespace: isProd,

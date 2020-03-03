@@ -1,0 +1,19 @@
+.message {
+  display: flex;
+  padding: 10px 20px;
+  background-color: #17212b;
+  border-radius: 4px;
+  margin-top: 4px;
+
+  &-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 6px 10px;
+    overflow-y: scroll;
+
+    & .message:first-child {
+      margin-top: auto;
+    }
+  }
+}
