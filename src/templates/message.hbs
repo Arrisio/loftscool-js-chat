@@ -1,0 +1,13 @@
+<div class="message">
+  <div class="message__photo-wrapper">
+    <img src="{{message.photoLink}}"  class="message__photo" alt="userPhoto">
+  </div>
+  <div class="message__body">
+    <div class="message__text">
+      {{message.text}}
+    </div>
+    <div class="message__time">
+      {{#getTime}}{{message.time}}{{/getTime}}
+    </div>
+  </div>
+</div>

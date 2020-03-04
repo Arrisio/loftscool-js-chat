@@ -1,23 +1,39 @@
 import axios from 'axios';
 
-const applicationState = {
-    isAuthentificated: false,
-    userFio: '',
-    userLogin: '',
-    allUsers: [],
+class ApplicationState {
+    constructor() {
+        this.isAuthentificated = false;
+        this.userFio = '';
+        this.userLogin = '';
+        this.allUsers = [];
+    }
 
-    authentificate: (userFio, userLogin) => {
+    authenticate(userFio='', userLogin='') {
         this.isAuthentificated = true;
         this.userFio = userFio;
         this.userLogin = userLogin;
-    },
-
-    // getAllUsers: async () => {
-    //     this.allUsers = await axios.get('http:127.0.0.1:3000/users/');
-    // },
+    }
+}
 
 
-};
+// const applicationState = {
+//     isAuthentificated: false,
+//     userFio: '',
+//     userLogin: '',
+//     allUsers: [],
+//
+//     authenticate: (userFio, userLogin) => {
+//         this.isAuthentificated = true;
+//         this.userFio = userFio;
+//         this.userLogin = userLogin;
+//     },
+
+// getAllUsers: async () => {
+//     this.allUsers = await axios.get('http:127.0.0.1:3000/users/');
+// },
+
+
+// };
 
 
 const messages = {
@@ -32,6 +48,7 @@ const messages = {
 };
 
 export {
-    applicationState,
+    // applicationState,
+    ApplicationState,
     messages
 }
