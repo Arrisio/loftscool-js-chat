@@ -1,5 +1,5 @@
 import './styles/style.scss';
-import { initChat } from './js/chat';
+import * as controls from './js/controllers';
 import logoImg from './images/logo.png'
 
-window.onload = initChat();
+window.onload = init();

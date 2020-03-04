@@ -38,5 +38,11 @@
     "webpack-cli": "^3.3.4",
     "webpack-dev-server": "^3.7.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cors": "^2.8.5",
+    "express": "^4.15.2",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0"
+  }
 }

@@ -8,6 +8,9 @@ function initChat () {
     const container = document.querySelector('.container');
     // container.innerHTML = chatRender();
     container.innerHTML = authRender();
+    // let modal = document.createElement('div');
+    // container.innerHTML = modalRender();
+    // document.body.appendChild(modal);
 };
 
 export {
