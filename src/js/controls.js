@@ -25,6 +25,9 @@ const enterApplication = async () => {
         await selectedContact.init(selectContactLogin);
         views.renderContactInfo(selectedContact);
         views.renderMessages(selectedContact.messages);
+        $('.contacts__item_selected').removeClass('contacts__item_selected');
+        e.delegateTarget.classList.add("contacts__item_selected");
+
     });
 
     $('#btnSendMsg').click(async e => {
@@ -51,8 +54,8 @@ const enterApplication = async () => {
 
 
 const authenticate = () => {
-    const authForm = document.getElementById('auth__form');
-    applicationState.authenticate(authForm.login, authForm.pwd);
+    const login = $('#authLogin').val();
+    applicationState.authenticate(login);
     enterApplication();
 };
 

@@ -51,7 +51,8 @@ module.exports = {
     optimization: optimization(),
     devServer: {
         index: 'index.html',
-        overlay: true
+        overlay: true,
+        // host: '0.0.0.0'
     },
     output: {
         filename: '[name].[hash].js',

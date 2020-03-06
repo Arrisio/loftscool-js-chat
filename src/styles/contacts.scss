@@ -5,6 +5,10 @@
     padding: 10px 20px;
 
     &:hover {
+      background: #5c5e66;
+    }
+
+    &_selected {
       background: #6a6c75;
     }
   }

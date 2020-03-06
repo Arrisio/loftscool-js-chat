@@ -1,16 +1,15 @@
 const SERVER_URL = 'http://127.0.0.1:3000';
 
 const applicationState = {
-    isAuthentificated: true,
+    isAuthentificated: false,
     userFio: '',
-    userLogin: 'user1',
+    userLogin: '',
     contactList: [],
     contacts: {},
     socket: io.connect(SERVER_URL),
 
-    authenticate: function (userFio = '', userLogin = '') {
+    authenticate: function ( userLogin = '') {
         this.isAuthentificated = true;
-        this.userFio = userFio;
         this.userLogin = userLogin;
         this._initChatConnection();
 
@@ -21,8 +20,9 @@ const applicationState = {
             .then(res => res.json())
             .then(res => {
                 this.contactList = res;
-                this.contactList.forEach(concact => {
-                    this.contacts[concact.login] = concact
+                this.contactList.forEach(contact => {
+                    this.contacts[contact.login] = contact;
+                    if (contact.login === this.userLogin) this.userFio=contact.fio;
                 })
             });
     },
@@ -63,7 +63,7 @@ class Contact {
     }
 
     async refreshMessages() {
-        await fetch(`${SERVER_URL}/messages/?user=${this.login}`)
+        await fetch(`${SERVER_URL}/messages/?user1=${this.login}&user2=${applicationState.userLogin}`)
             .then(res => res.json())
             .then(res => {
                 this.messages = res;

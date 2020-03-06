@@ -6,9 +6,9 @@ const io = require('socket.io')(http);
 const fs = require('fs');
 
 const
-    users = JSON.parse(fs.readFileSync(__dirname+'/users.json')),
+    users = JSON.parse(fs.readFileSync(__dirname + '/users.json')),
     userConnections = {},
-    messages = JSON.parse(fs.readFileSync(__dirname+'/messages.json'));
+    messages = JSON.parse(fs.readFileSync(__dirname + '/messages.json'));
 
 app.get('/users/', function (req, res) {
     res.json(users)
@@ -17,9 +17,12 @@ app.get('/users/', function (req, res) {
 app.get('/messages/', function (req, res) {
     res.json(
         messages
-            .filter(message => (message.from === req.query.user|| message.to === req.query.user))
+            .filter(message => (
+                (message.from === req.query.user1 || message.to === req.query.user1) &&
+                (message.from === req.query.user2 || message.to === req.query.user2)
+            ))
             .sort((m1, m2) => m1.timestamp > m2.timestamp ? 1 : -1)
-)
+    )
 });
 
 io.on('connection', function (socket) {

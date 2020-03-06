@@ -1,14 +1,18 @@
 .auth {
+  //width: 720px;
+  background-color: #5c5e66;
   &__block {
-    width: 516px;
-    background-color: #17212b;
+
+    width: 500px;
+    //background-color: #17212b;
     padding: 40px 110px 48px;
+    margin: auto;
   }
 
   &__logo {
     width: 140px;
     height: 140px;
-    background-color: #242f3d;
+    //background-color: #242f3d;
     display: flex;
     justify-content: center;
     align-items: center;
