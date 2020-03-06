@@ -3,6 +3,8 @@ import chatRender from '../templates/chat.hbs';
 import authRender from '../templates/auth.hbs';
 import contactsRender from '../templates/contacts.hbs';
 import messagesRender from '../templates/messages.hbs';
+import msgRender from '../templates/message.hbs';
+import responseRender from '../templates/message-response.hbs';
 import contactInfoRender from '../templates/contact-info.hbs';
 
 const renderAuth = () => {
@@ -21,10 +23,27 @@ const renderContactInfo = (contact) => {
 };
 
 const renderMessages = (messages) => {
-    const msgHtml = messagesRender({messages});
     $('#chat__messages').empty().append(messagesRender({messages}));
+    _scrollToBottom();
 };
 
+const renderMsg = (msgTxt) =>{
+    $('#messages').append(msgRender(msgTxt));
+    _scrollToBottom();
+};
+
+const renderResponse = (msgTxt) =>{
+    const $chatHistory = $('#messages');
+    $('#messages').append(responseRender(msgTxt));
+    _scrollToBottom();
+};
+
+const _scrollToBottom = function() {
+    const $chatHistory = $('#chat__messages');
+    $chatHistory.scrollTop($chatHistory[0].scrollHeight);
+};
+
+
 export {
-    renderAuth, renderChat, renderContacts, renderContactInfo,renderMessages
+    renderAuth, renderChat, renderContacts, renderContactInfo,renderMessages, renderResponse, renderMsg
 };

@@ -6,6 +6,10 @@
 *, *:before, *:after {
   box-sizing: border-box;
 }
+
+ul {
+  padding-left: 0;
+}
 li {
   list-style: none;
 }

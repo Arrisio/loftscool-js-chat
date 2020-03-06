@@ -12,8 +12,8 @@
     "timestamp": 1583430536270
   },
   {
-    "from": "user2",
-    "to": "user1",
+    "from": "user1",
+    "to": "user2",
     "msg": "What is the most used language in programming? Profanity.",
     "timestamp": 1583430537519
   },
@@ -24,7 +24,7 @@
     "timestamp": 1583430538198
   },
   {
-    "from": "user1",
+    "from": "user3",
     "to": "user2",
     "msg": "An SEO expert walks into a bar, bars, pub, tavern, public house, Irish pub, drinks, beer, alcohol",
     "timestamp": 1583430541779
@@ -36,20 +36,20 @@
     "timestamp": 1583430542683
   },
   {
-    "from": "user1",
-    "to": "user2",
+    "from": "user2",
+    "to": "user3",
     "msg": "How do you comfort a JavaScript bug? You console it.",
     "timestamp": 1583430543341
   },
   {
-    "from": "user1",
-    "to": "user2",
-    "msg": "No!!,
+    "from": "user3",
+    "to": "user1",
+    "msg": "No!!",
     "timestamp": 1583430543781
   },
   {
-    "from": "user1",
-    "to": "user2",
+    "from": "user2",
+    "to": "user1",
     "msg": "How do you comfort a JavaScript bug? You console it.",
     "timestamp": 1583430543957
   },

@@ -1,8 +1,9 @@
-import {applicationState, Contact} from './models';
+import {applicationState, Contact, completeMsg} from './models';
 import * as views from './views'
 import registerCustomHelpers from './handlebarsExtras';
 
 
+applicationState._initChatConnection();
 
 registerCustomHelpers();
 const selectedContact = new Contact();
@@ -17,7 +18,7 @@ const enterApplication = async () => {
 
     views.renderChat();
     await applicationState.getContacts();
-    views.renderContacts(applicationState.contacts);
+    views.renderContacts(applicationState.contactList);
 
     $('.contacts__item').click(async e => {
         const selectContactLogin = e.delegateTarget.querySelector('.contact').dataset.login;
@@ -25,6 +26,26 @@ const enterApplication = async () => {
         views.renderContactInfo(selectedContact);
         views.renderMessages(selectedContact.messages);
     });
+
+    $('#btnSendMsg').click(async e => {
+        const msgText = $('#message-to-send').val() ;
+        if (msgText && selectedContact.login) {
+            selectedContact.sendMessage(msgText);
+            $('#message-to-send').val('');
+        }
+    });
+
+    applicationState.socket.on(['confirmMsg'], data => {
+        completeMsg(data);
+        console.log(data);
+        views.renderResponse(data);
+    });
+
+    applicationState.socket.on(['newMsg'], data => {
+        completeMsg(data);
+        views.renderMsg(data);
+    })
+
 
 };
 
@@ -34,6 +55,7 @@ const authenticate = () => {
     applicationState.authenticate(authForm.login, authForm.pwd);
     enterApplication();
 };
+
 
 export {
     enterApplication,

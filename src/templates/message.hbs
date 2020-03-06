@@ -1,7 +1,9 @@
-<div class="message-data">
-  <span class="message-data-name"><i class="fa fa-circle online"></i> {{this.from}}</span>
-  <span class="message-data-time">{{prettifyDate this.timestamp}}, Today</span>
-</div>
-<div class="message my-message">
-  {{msg.msg}}
-</div>
+<li>
+  <div class="message-data">
+    <span class="message-data-name"><i class="fa fa-circle online"></i> {{this.fromFio}}</span>
+    <span class="message-data-time">{{this.timestamp}}</span>
+  </div>
+  <div class="message my-message">
+    {{this.msg}}
+  </div>
+</li>

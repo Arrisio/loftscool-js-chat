@@ -1,13 +1,9 @@
-<ul>
+<ul id="messages">
   {{#each messages}}
     {{#if userIsAuthor}}
-      <li>
-        {{> "message.hbs" msg=.}}
-      </li>
+        {{> "message.hbs"}}
     {{else}}
-      <li class="clearfix">
-        {{> "message-response.hbs" msg=.}}
-      </li>
+        {{> "message-response.hbs"}}
     {{/if}}
   {{/each}}
 </ul>
