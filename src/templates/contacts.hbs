@@ -1,5 +1,7 @@
-<ul class="contacts">
+<ul class="list contacts" id="contacts">
   {{#each contacts}}
-    {{"contact.hbs" contact=.}}
+    <li class="contacts__item">
+      {{> "contact.hbs" contact=.}}
+    </li>
   {{/each}}
 </ul>

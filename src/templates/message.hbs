@@ -1,13 +1,7 @@
-<div class="message">
-  <div class="message__photo-wrapper">
-    <img src="{{message.photoLink}}"  class="message__photo" alt="userPhoto">
-  </div>
-  <div class="message__body">
-    <div class="message__text">
-      {{message.text}}
-    </div>
-    <div class="message__time">
-      {{#getTime}}{{message.time}}{{/getTime}}
-    </div>
-  </div>
+<div class="message-data">
+  <span class="message-data-name"><i class="fa fa-circle online"></i> {{this.from}}</span>
+  <span class="message-data-time">{{ this.timestamp}}, Today</span>
+</div>
+<div class="message my-message">
+  {{msg.msg}}
 </div>

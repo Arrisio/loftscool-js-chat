@@ -1,9 +1,11 @@
-<div class="contact">
+<div class="contact" data-login="{{login}}">
   <div class="contact__photo-wrapper">
-    <img src="{{contact.photoLink}}" alt="userPhoto">
+    <img src="{{photoLink}}" alt="avatar" class="contact__photo"/>
   </div>
-  <div class="contact__text-block">
-    <div class="contact__fio">{{contact.fio}}</div>
-<!--    <div class="contact__last-msg">{{contact.lastMsg}}</div>-->
+  <div class="about">
+    <div class="name">{{fio}}</div>
+    <div class="status">
+      <i class="fa fa-circle online"></i> online
+    </div>
   </div>
 </div>

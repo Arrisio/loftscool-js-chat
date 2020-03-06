@@ -1,0 +1,53 @@
+.people-list {
+  overflow-y: scroll;
+  width:260px;
+  float: left;
+
+  .search {
+    padding-left: 20px;
+    padding-top: 20px;
+  }
+
+  input {
+    border-radius: 3px;
+    border: none;
+    padding: 14px;
+    color: white;
+    background: #6A6C75;
+    width: 90%;
+    font-size: 14px;
+  }
+
+  .fa-search {
+    position: relative;
+    left: -25px;
+  }
+
+  ul {
+    //padding: 20px;
+    height: 770px;
+
+    //li {
+    //  padding-bottom: 20px;
+    //}
+  }
+
+  img {
+    float: left;
+  }
+
+  .about {
+    //float: left;
+    margin-top: 8px;
+  }
+
+  .about {
+    padding-left: 8px;
+    //margin-left: auto;
+  }
+
+  .status {
+    color: $gray;
+  }
+
+}

@@ -6,9 +6,9 @@ const io = require('socket.io')(http);
 const fs = require('fs');
 
 const
-    users = JSON.parse(fs.readFileSync('users.json')),
+    users = JSON.parse(fs.readFileSync(__dirname+'/users.json')),
     userConnections = {},
-    messages = [];
+    messages = JSON.parse(fs.readFileSync(__dirname+'/messages.json'));
 
 app.get('/users/', function (req, res) {
     res.json(users)

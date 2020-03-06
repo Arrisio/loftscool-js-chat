@@ -1,8 +1,9 @@
-import hbs from 'handlebars';
+// import hbs from 'handlebars';
 
-export function registerCustomHelpers () {
+export default  function  () {
     Handlebars.registerHelper(
-        'getTime',
-        fecha => new Date(fecha).toLocaleTimeString()
+        'prettifyDate',
+        timestamp => new Date(timestamp).toLocaleTimeString()
     )
 }
+
