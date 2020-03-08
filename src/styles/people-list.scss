@@ -4,6 +4,8 @@
   float: left;
 
   .search {
+    display: flex;
+    align-items: center;
     padding-left: 20px;
     padding-top: 20px;
   }

@@ -1,0 +1,59 @@
+$s: 3px;
+
+
+.burger-wrapper {
+  cursor: pointer;
+  margin: auto;
+  width: $s*10;
+  height: $s*8;
+  margin-right: 5px;
+
+  .hamburger {
+    background: white;
+    width: $s*10;
+    height: $s;
+    position: relative;
+    transition: background 10ms 300ms ease;
+    transform: translateY($s*4);
+
+    &:before, &:after {
+      transition: top 300ms 350ms ease,
+      transform 300ms 50ms ease;
+      position: absolute;
+      background: white;
+      width: $s*10;
+      height: $s;
+      content: '';
+    }
+    &:before {
+      top: $s*-3;
+    }
+
+    &:after {
+      top: $s*3;
+    }
+  }
+}
+
+.menu-trigger:checked {
+  ~ .burger-wrapper {
+    .hamburger {
+      background: transparent;
+      &:after, &:before {
+        transition: top 300ms 50ms ease,
+        transform 300ms 350ms ease;
+        top: 0;
+      }
+      &:before {
+        transform: rotate(45deg);
+      }
+      &:after {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}

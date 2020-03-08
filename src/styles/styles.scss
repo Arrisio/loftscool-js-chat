@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700);
 @import "variables";
-@import 'auth', 'chat', 'people-list','contact','contacts';
-
+@import 'auth', 'chat', 'people-list','contact','contacts', 'hamburger';
 
 *, *:before, *:after {
   box-sizing: border-box;

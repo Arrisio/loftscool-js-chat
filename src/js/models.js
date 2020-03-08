@@ -1,7 +1,7 @@
 const SERVER_URL = 'http://127.0.0.1:3000';
 
 const applicationState = {
-    isAuthentificated: false,
+    isAuthentificated: true,
     userFio: '',
     userLogin: '',
     contactList: [],
