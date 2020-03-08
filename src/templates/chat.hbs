@@ -1,18 +1,13 @@
 <div class="container clearfix">
   <div class="people-list" id="people-list">
-<!--start hmb -->
-
-
-<!--    end hmb-->
     <div class="search">
-      <input class="menu-trigger hidden" id="togglenav" type="checkbox" /><label class="burger-wrapper" for="togglenav"><div class="hamburger"></div></label>
+      <input class="menu-trigger hidden" id="togglenav" type="checkbox" /><label class="burger-wrapper trigger" for="togglenav"><div class="hamburger"></div></label>
       <input type="text" placeholder="search" />
       <i class="fa fa-search"></i>
     </div>
     <div class="people-list__contacts" id ='people-list__contacts'>
       <!--      area for Contacts list -->
     </div>
-
   </div>
 
   <div class="chat">
@@ -22,8 +17,7 @@
 
     <div class="chat-history" id="chat__messages">
       <!--      area for Messages-->
-
-    </div>
+  </div>
 
     <div class="chat-message clearfix">
       <textarea name="message-to-send" id="message-to-send" placeholder ="Type your message" rows="3"></textarea>
@@ -38,4 +32,5 @@
   </div> <!-- end chat -->
 
 </div> <!-- end container -->
+{{> 'add-photo.hbs'}}
 

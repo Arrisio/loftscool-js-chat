@@ -2,8 +2,8 @@ const SERVER_URL = 'http://127.0.0.1:3000';
 
 const applicationState = {
     isAuthentificated: true,
-    userFio: '',
-    userLogin: '',
+    userFio: 'aa',
+    userLogin: 'user1',
     contactList: [],
     contacts: {},
     socket: io.connect(SERVER_URL),

@@ -9,6 +9,7 @@ $s: 3px;
   margin-right: 5px;
 
   .hamburger {
+    border-radius: 3px;
     background: white;
     width: $s*10;
     height: $s;
@@ -17,6 +18,7 @@ $s: 3px;
     transform: translateY($s*4);
 
     &:before, &:after {
+      border-radius: 3px;
       transition: top 300ms 350ms ease,
       transform 300ms 50ms ease;
       position: absolute;
@@ -35,24 +37,25 @@ $s: 3px;
   }
 }
 
-.menu-trigger:checked {
-  ~ .burger-wrapper {
-    .hamburger {
-      background: transparent;
-      &:after, &:before {
-        transition: top 300ms 50ms ease,
-        transform 300ms 350ms ease;
-        top: 0;
-      }
-      &:before {
-        transform: rotate(45deg);
-      }
-      &:after {
-        transform: rotate(-45deg);
-      }
-    }
-  }
-}
+// Задизейблил , тк.к надо крутить логику, чтоб крестик расходился после закрытия окна с модалкой
+//.menu-trigger:checked {
+//  ~ .burger-wrapper {
+//    .hamburger {
+//      background: transparent;
+//      &:after, &:before {
+//        transition: top 300ms 50ms ease,
+//        transform 300ms 350ms ease;
+//        top: 0;
+//      }
+//      &:before {
+//        transform: rotate(45deg);
+//      }
+//      &:after {
+//        transform: rotate(-45deg);
+//      }
+//    }
+//  }
+//}
 
 .hidden {
   display: none;
