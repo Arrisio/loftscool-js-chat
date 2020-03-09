@@ -5,6 +5,10 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const fs = require('fs');
 
+var multer  = require('multer')
+var upload = multer({ dest: 'uploads/' })
+
+
 const
     users = JSON.parse(fs.readFileSync(__dirname + '/users.json')),
     userConnections = {},
@@ -12,6 +16,14 @@ const
 
 app.get('/users/', function (req, res) {
     res.json(users)
+});
+
+app.post('/photo/', upload.single('photo') , function (req, res) {
+    users[0]['photo'] = req.files;
+    console.log(req.files);
+    console.log('---------');
+    // console.log(req.body);
+    res.sendStatus(200);
 });
 
 app.get('/messages/', function (req, res) {
