@@ -5,59 +5,67 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const fs = require('fs');
 
-var multer  = require('multer')
-var upload = multer({ dest: 'uploads/' })
-
-
 const
-    users = JSON.parse(fs.readFileSync(__dirname + '/users.json')),
-    userConnections = {},
-    messages = JSON.parse(fs.readFileSync(__dirname + '/messages.json'));
+    // users = JSON.parse(fs.readFileSync(__dirname + '/users.json')),
+    connectedUsers = {},
+    // messages = JSON.parse(fs.readFileSync(__dirname + '/messages.json'));
+    messages = [];
 
 app.get('/users/', function (req, res) {
-    res.json(users)
+    res.json(connectedUsers)
 });
 
-app.post('/photo/', upload.single('photo') , function (req, res) {
-    users[0]['photo'] = req.files;
-    console.log(req.files);
-    console.log('---------');
-    // console.log(req.body);
-    res.sendStatus(200);
-});
 
 app.get('/messages/', function (req, res) {
     res.json(
         messages
             .filter(message => (
-                (message.from === req.query.user1 || message.to === req.query.user1) &&
-                (message.from === req.query.user2 || message.to === req.query.user2)
+                (message.from === req.query.user1 && message.to === req.query.user2) ||
+                (message.from === req.query.user2 && message.to === req.query.user1)
             ))
-            .sort((m1, m2) => m1.timestamp > m2.timestamp ? 1 : -1)
+            .sort((m1, m2) => m1.timestamp < m2.timestamp ? 1 : -1)
     )
 });
 
 io.on('connection', function (socket) {
+
     socket.on('registerConnection', data => {
-        socket.userId = data.userId;
-        userConnections[data.userId] = socket;
+        const login = data.login;
+        socket.login = login;
+        data['socketId'] = socket.id;
+        data['status'] = true;
+        connectedUsers[login] = data;
+        io.sockets.emit('updateUser', data);
+        console.log('user connected', login)
     });
 
     socket.on('initMsg', data => {
         data.timestamp = Date.now();
-        messages.push(data);
+        messages.unshift(data);
+        socket.emit('confirmMsg', data);
         console.log(data);
-        userConnections[data.from].emit('confirmMsg', data);
-        socketTo = userConnections[data.to];
-        if (socketTo) {
-            socketTo.emit('newMsg', data)
+        const socketIdTo = connectedUsers[data.to].socketId;
+        if (socketIdTo && socketIdTo !== socket.id) {
+            io.to(socketIdTo).emit('newMsg', data)
         }
-        ;
+    });
+
+    socket.on('updateUserPhoto', data => {
+        // io.sockets.emit('updateUserPhoto', data);
+        console.log(connectedUsers[socket.login]);
+        console.log(data);
+        connectedUsers[socket.login]['photo'] = data.photo;
+        io.sockets.emit('updateUser', connectedUsers[socket.login]);
     });
 
     socket.on('disconnect', () => {
-        console.log('a user disconnected to default', socket.userId);
-        delete userConnections[socket.userId];
+        userData = connectedUsers[socket.login];
+        if (!userData) return;
+        userData.status = false;
+        io.sockets.emit('updateUser', userData);
+        // io.sockets.emit('userDisconnected', {userLogin:socket.userLogin});
+        console.log('a user disconnected to default', socket.login);
+        console.log('renaining connections', connectedUsers);
     })
 });
 

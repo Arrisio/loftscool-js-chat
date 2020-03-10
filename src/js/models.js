@@ -1,16 +1,17 @@
 const SERVER_URL = 'http://127.0.0.1:3000';
 
 const applicationState = {
-    isAuthentificated: true,
-    userFio: 'aa',
+    isAuthentificated: false,
+    userFio: 'GG II OO',
     userLogin: 'user1',
-    contactList: [],
+    // contactList: [],
     contacts: {},
     socket: io.connect(SERVER_URL),
 
-    authenticate: function ( userLogin = '') {
+    authenticate: function ( login = '', fio = '') {
         this.isAuthentificated = true;
-        this.userLogin = userLogin;
+        this.userLogin = login;
+        this.userFio = fio;
         this._initChatConnection();
 
     },
@@ -19,16 +20,16 @@ const applicationState = {
         await fetch(SERVER_URL + "/users/", {method: "GET"})
             .then(res => res.json())
             .then(res => {
-                this.contactList = res;
-                this.contactList.forEach(contact => {
-                    this.contacts[contact.login] = contact;
-                    if (contact.login === this.userLogin) this.userFio=contact.fio;
-                })
-            });
+                this.contacts = res;
+                });
     },
 
     _initChatConnection() {
-        this.socket.emit('registerConnection', {userId: this.userLogin});
+        console.log('init ');
+        this.socket.emit('registerConnection', {
+            login: this.userLogin,
+            fio: this.userFio
+        });
     }
 };
 
@@ -44,10 +45,10 @@ class Contact {
         if (!login || typeof login !== 'string') throw new Error('Incorrect login while contact initialization');
 
         this.login = login;
-        this.profile = applicationState.contactList.find(contact => contact.login === login);
+        this.profile = applicationState.contacts[login];
         if (this.profile) {
             this.fio = this.profile.fio;
-            this.photoLink = this.profile.photoLink;
+            this.photo = this.profile.photo;
         }
         this.fio = this.profile.fio;
 
@@ -55,6 +56,10 @@ class Contact {
     }
 
     sendMessage(msgText) {
+        if (!(applicationState.socket && applicationState.socket.connected)) {
+            alert('Connection to chat server is broken');
+            return;
+        }
         applicationState.socket.emit('initMsg', {
             from: applicationState.userLogin,
             to: this.login,
@@ -74,6 +79,8 @@ class Contact {
 
     _completeMsgs() {
         this.messages.forEach(msg => {
+            if (!msg) return;
+            console.log(msg);
             msg.userIsAuthor = msg.from === applicationState.userLogin;
             msg.fromFio = applicationState.contacts[msg.from].fio;
             msg.toFio = applicationState.contacts[msg.to];

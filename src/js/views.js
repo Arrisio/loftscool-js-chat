@@ -2,48 +2,53 @@ import indexRender from '../templates/index.hbs';
 import chatRender from '../templates/chat.hbs';
 import authRender from '../templates/auth.hbs';
 import contactsRender from '../templates/contacts.hbs';
+import contactRender from '../templates/contact.hbs';
 import messagesRender from '../templates/messages.hbs';
 import msgRender from '../templates/message.hbs';
 import responseRender from '../templates/message-response.hbs';
 import contactInfoRender from '../templates/contact-info.hbs';
 
 const renderAuth = () => {
-    $('.container').empty().append(authRender());
+    // $('.container').empty().append(authRender());
+    return authRender()
 };
 
 const renderChat = () => {
-    $('.container').empty().append(chatRender())
+    return chatRender()
 };
 
 const renderContacts = (contacts) => {
-    $('#people-list__contacts').empty().append(contactsRender({contacts}))
+    return contactsRender({contacts})
 };
+
+const renderContact = (contact) => {
+    return contactRender(contact);
+};
+
+
 const renderContactInfo = (contact) => {
-    $('#chat__contact-info').empty().append(contactInfoRender(contact))
+    console.log(contact);
+    return contactInfoRender(contact)
 };
 
 const renderMessages = (messages) => {
-    $('#chat__messages').empty().append(messagesRender({messages}));
-    _scrollToBottom();
+    return messagesRender({messages})
 };
 
 const renderMsg = (msgTxt) =>{
-    $('#messages').append(msgRender(msgTxt));
-    _scrollToBottom();
+    return msgRender(msgTxt)
 };
 
 const renderResponse = (msgTxt) =>{
-    const $chatHistory = $('#messages');
-    $('#messages').append(responseRender(msgTxt));
-    _scrollToBottom();
+    return responseRender(msgTxt)
 };
 
-const _scrollToBottom = function() {
-    const $chatHistory = $('#chat__messages');
-    $chatHistory.scrollTop($chatHistory[0].scrollHeight);
-};
+// const _scrollToBottom = function() {
+//     const $chatHistory = $('#chat__messages');
+//     $chatHistory.scrollTop($chatHistory[0].scrollHeight);
+// };
 
 
 export {
-    renderAuth, renderChat, renderContacts, renderContactInfo,renderMessages, renderResponse, renderMsg
+    renderAuth, renderChat, renderContacts, renderContact, renderContactInfo,renderMessages, renderResponse, renderMsg
 };

@@ -1,11 +1,24 @@
-<div class="contact" data-login="{{login}}">
+<li class="contacts__item" data-login="{{login}}" id="contacts__item-{{login}}">
+<div class="contact">
   <div class="contact__photo-wrapper">
-    <img src="{{photoLink}}" alt="avatar" class="contact__photo"/>
+    <img src=
+        {{#if photo}}
+          "{{photo}}"
+        {{else}}
+          "images/default-photo.png"
+        {{/if}}
+      class="contact__photo contact__photo-{{login}}"/>
   </div>
   <div class="about">
     <div class="name">{{fio}}</div>
     <div class="status">
-      <i class="fa fa-circle online"></i> online
+      {{#if status}}
+        <i class="fa fa-circle online"></i> online
+      {{else}}
+        <i class="fa fa-circle offline"></i> offline
+      {{/if}}
+<!--      <i class="fa fa-circle offline"></i> online-->
     </div>
   </div>
 </div>
+</li>
