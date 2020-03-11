@@ -3,12 +3,9 @@ const cors = require('cors');
 app.use(cors());
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-const fs = require('fs');
 
 const
-    // users = JSON.parse(fs.readFileSync(__dirname + '/users.json')),
     connectedUsers = {},
-    // messages = JSON.parse(fs.readFileSync(__dirname + '/messages.json'));
     messages = [];
 
 app.get('/users/', function (req, res) {
@@ -52,9 +49,6 @@ io.on('connection', function (socket) {
     });
 
     socket.on('updateUserPhoto', data => {
-        // io.sockets.emit('updateUserPhoto', data);
-        // console.log(connectedUsers[socket.login]);
-        // console.log(data);
         if (!data.photo) data['photo'] = "images/default-photo.png";
         connectedUsers[socket.login]['photo'] = data.photo;
         io.sockets.emit('updateUser', connectedUsers[socket.login]);
@@ -65,7 +59,6 @@ io.on('connection', function (socket) {
         if (!userData) return;
         userData.status = false;
         io.sockets.emit('updateUser', userData);
-        // io.sockets.emit('userDisconnected', {userLogin:socket.userLogin});
         console.log('a user disconnected to default', socket.login);
         console.log('renaining connections', connectedUsers);
     })

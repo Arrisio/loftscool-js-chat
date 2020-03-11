@@ -13,7 +13,7 @@ const enterApplication = async () => {
         document.getElementById('btnAuth').addEventListener('click', authenticate);
         return;
     }
-    applicationState.authenticate('user1', 'FiOO')
+    // applicationState.authenticate('user1', 'FiOO')
     let contactsDOM, messagesDOM;
 
     displayChat();
