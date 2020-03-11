@@ -1,7 +1,8 @@
-import Handlebars from 'handlebars';
+// import Handlebars from 'handlebars';
+const Handlebars = require('handlebars');
 Handlebars.registerHelper(
     'prettifyDate',
-    ts => new Date(ts).toLocaleTimeString()
+    function (ts) { return new Date(ts).toLocaleTimeString()}
 );
 console.log(Handlebars);
 
@@ -14,8 +15,6 @@ import messagesRender from '../templates/messages.hbs';
 import msgRender from '../templates/message.hbs';
 import responseRender from '../templates/message-response.hbs';
 import contactInfoRender from '../templates/contact-info.hbs';
-
-
 
 
 const renderAuth = () => {
@@ -52,5 +51,5 @@ const renderResponse = (msgTxt) =>{
 };
 
 export {
-    renderAuth, renderChat, renderContacts, renderContact, renderContactInfo,renderMessages, renderResponse, renderMsg
+    renderAuth, renderChat, renderContacts, renderContact, renderContactInfo,renderMessages, renderResponse, renderMsg, Handlebars
 };

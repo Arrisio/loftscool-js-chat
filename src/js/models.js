@@ -79,7 +79,6 @@ class Contact {
     _completeMsgs() {
         this.messages.forEach(msg => {
             if (!msg) return;
-            console.log(msg);
             msg.userIsAuthor = msg.from === applicationState.userLogin;
             msg.fromFio = applicationState.contacts[msg.from].fio;
             msg.toFio = applicationState.contacts[msg.to];

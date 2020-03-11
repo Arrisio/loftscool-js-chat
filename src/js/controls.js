@@ -1,8 +1,6 @@
 import {applicationState, Contact, completeMsg} from './models';
 import * as views from './views'
-import registerCustomHelpers from './handlebarsExtras';
 
-// registerCustomHelpers();
 const selectedContact = new Contact();
 
 const enterApplication = async () => {
