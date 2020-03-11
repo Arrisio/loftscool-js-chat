@@ -114,19 +114,6 @@
 
     }
 
-    button {
-      float: right;
-      color: $blue;
-      font-size: 16px;
-      text-transform: uppercase;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-      background: #F2F5F8;
 
-      &:hover {
-        color: darken($blue, 7%);
-      }
-    }
   }
 }

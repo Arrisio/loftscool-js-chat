@@ -34,6 +34,7 @@ io.on('connection', function (socket) {
         socket.login = login;
         data['socketId'] = socket.id;
         data['status'] = true;
+        if (!data.photo) data['photo'] = "images/default-photo.png";
         connectedUsers[login] = data;
         io.sockets.emit('updateUser', data);
         console.log('user connected', login)
@@ -52,8 +53,9 @@ io.on('connection', function (socket) {
 
     socket.on('updateUserPhoto', data => {
         // io.sockets.emit('updateUserPhoto', data);
-        console.log(connectedUsers[socket.login]);
-        console.log(data);
+        // console.log(connectedUsers[socket.login]);
+        // console.log(data);
+        if (!data.photo) data['photo'] = "images/default-photo.png";
         connectedUsers[socket.login]['photo'] = data.photo;
         io.sockets.emit('updateUser', connectedUsers[socket.login]);
     });

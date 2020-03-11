@@ -1,10 +1,20 @@
 <div class="modal">
 
   <div class="modal-content">
-    <span class="close-button">&times;</span>
-    <h1>Hello, I am a modal!</h1>
-    <input type="file" name="" id="photoInput">
-    <img src="../images/logo.png" alt="" id="thePhoto">
-    <button id = 'savePhoto'>Save photo</button>
+<!--    <span class="close-button">&times;</span>-->
+
+    <div class="modal__photo photo__pic">
+      <label for="photoInput">
+        <img src="../images/default-photo.png" alt="" class="photo__img" id="thePhoto">
+      </label>
+    </div>
+    <div class="modal__controls">
+      <button class="photo__cancel button" id='cancelPhoto'>Отмена</button>
+      <button class="photo__save button" id='savePhoto'>Сохранить</button>
+    </div>
+
+
+    <input type="file" name="" id="photoInput" style="display: none" accept="image/jpeg,image/jpg,image/png">
   </div>
 </div>
+

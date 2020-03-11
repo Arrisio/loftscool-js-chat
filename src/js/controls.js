@@ -13,7 +13,7 @@ const enterApplication = async () => {
         document.getElementById('btnAuth').addEventListener('click', authenticate);
         return;
     }
-
+    applicationState.authenticate('user1', 'FiOO')
     let contactsDOM, messagesDOM;
 
     displayChat();
@@ -125,7 +125,7 @@ const authenticate = () => {
 async function renderAddPhoto() {
     var modal = document.querySelector(".modal");
     var trigger = document.querySelector(".trigger");
-    var closeButton = document.querySelector(".close-button");
+    var closeButton = document.querySelector("#cancelPhoto");
 
     function toggleModal() {
         modal.classList.toggle("show-modal");

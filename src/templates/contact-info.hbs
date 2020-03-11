@@ -1,11 +1,12 @@
 <div id="contact-info" class="contact-info">
+<div class="modal__photo">
 <img src=
   {{#if photo}}
     "{{photo}}"
   {{else}}
     "images/default-photo.png"
   {{/if}} alt="avatar" class="contact__photo contact__photo-{{login}}"/>
-
+</div>
   <div class="chat-about">
     <div class="chat-with">Chat with {{fio}}</div>
     <div class="chat-num-messages">already {{messagesNmb}} messages</div>
