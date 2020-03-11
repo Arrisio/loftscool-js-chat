@@ -168,6 +168,7 @@ async function renderAddPhoto() {
         applicationState.socket.emit('updateUserPhoto', {
             photo: fileReader.result
         })
+        toggleModal();
     })
 
 }
