@@ -8,8 +8,11 @@ import msgRender from '../templates/message.hbs';
 import responseRender from '../templates/message-response.hbs';
 import contactInfoRender from '../templates/contact-info.hbs';
 
+import handlebarsExtras from './handlebarsExtras';
+handlebarsExtras();
+console.log(Handlebars);
+
 const renderAuth = () => {
-    // $('.container').empty().append(authRender());
     return authRender()
 };
 
@@ -27,7 +30,6 @@ const renderContact = (contact) => {
 
 
 const renderContactInfo = (contact) => {
-    console.log(contact);
     return contactInfoRender(contact)
 };
 
@@ -42,12 +44,6 @@ const renderMsg = (msgTxt) =>{
 const renderResponse = (msgTxt) =>{
     return responseRender(msgTxt)
 };
-
-// const _scrollToBottom = function() {
-//     const $chatHistory = $('#chat__messages');
-//     $chatHistory.scrollTop($chatHistory[0].scrollHeight);
-// };
-
 
 export {
     renderAuth, renderChat, renderContacts, renderContact, renderContactInfo,renderMessages, renderResponse, renderMsg
