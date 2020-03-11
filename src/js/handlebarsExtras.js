@@ -1,9 +1,15 @@
 // import hbs from 'handlebars';
+import Handlebars from 'handlebars';
 
-export default  function  () {
+function registerHelpers  () {
     Handlebars.registerHelper(
         'prettifyDate',
-        timestamp => new Date(timestamp).toLocaleTimeString()
+        ts => new Date(ts).toLocaleTimeString()
     )
+}
+
+export {
+    Handlebars,
+    registerHelpers
 }
 

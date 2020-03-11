@@ -1,4 +1,5 @@
 import './styles/styles.scss';
+import Handlebars from 'handlebars';
 import * as controls from './js/controls';
 import defaultPhotoImg from './images/default-photo.png';
 import logoImg from './images/logo.png';

@@ -39,6 +39,7 @@ io.on('connection', function (socket) {
 
     socket.on('initMsg', data => {
         data.timestamp = Date.now();
+        data.ts = Date.now();
         messages.unshift(data);
         socket.emit('confirmMsg', data);
         console.log(data);

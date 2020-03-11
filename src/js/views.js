@@ -1,3 +1,10 @@
+import Handlebars from 'handlebars';
+Handlebars.registerHelper(
+    'prettifyDate',
+    ts => new Date(ts).toLocaleTimeString()
+);
+console.log(Handlebars);
+
 import indexRender from '../templates/index.hbs';
 import chatRender from '../templates/chat.hbs';
 import authRender from '../templates/auth.hbs';
@@ -8,9 +15,8 @@ import msgRender from '../templates/message.hbs';
 import responseRender from '../templates/message-response.hbs';
 import contactInfoRender from '../templates/contact-info.hbs';
 
-import handlebarsExtras from './handlebarsExtras';
-handlebarsExtras();
-console.log(Handlebars);
+
+
 
 const renderAuth = () => {
     return authRender()
