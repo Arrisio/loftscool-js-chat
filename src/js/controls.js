@@ -167,7 +167,7 @@ async function renderAddPhoto() {
     document.getElementById('savePhoto').addEventListener('click', () => {
         applicationState.socket.emit('updateUserPhoto', {
             photo: fileReader.result
-        })
+        });
         toggleModal();
     })
 
